@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Backend Software Engineer specializing in production-ready Python development. Experienced in architecting fault-tolerant APIs, event-driven systems, and LLM integrations."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content="Vlad - Backend Engineer" />
+  <meta name="theme-color" content="#1e1e1e" />
+  <title>{title}</title>
+</head>
+<body>
+  <div class="container">
+    <slot />
+  </div>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/tokens.css';
+  @import '../styles/global.css';
+</style>

@@ -1,0 +1,76 @@
+---
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  caption: string;
+}
+
+const { imageSrc, imageAlt, caption } = Astro.props;
+---
+
+<div class="avatar-card">
+  <div class="card-border">
+    <div class="image-wrapper">
+      <img src={imageSrc} alt={imageAlt} />
+    </div>
+    <div class="card-footer">
+      <span>{caption}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .avatar-card {
+    flex-shrink: 0;
+  }
+
+  .card-border {
+    width: 240px;
+    height: 320px;
+    border: 2px solid var(--color-text-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  }
+
+  .card-border:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--color-text-primary);
+    background-color: #252526;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-footer {
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+    letter-spacing: 1px;
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 900px) {
+    .avatar-card {
+      margin-bottom: var(--spacing-xl);
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+// Кнопки управления окном (minimize, expand, close)
+---
+
+<div class="window-controls">
+  <button class="btn-control minimize" aria-label="Minimize window">
+    <img src="/window-actions/minimize.svg" alt="minimize" width="24" height="24" />
+  </button>
+  <button class="btn-control expand" aria-label="Expand window">
+    <img src="/window-actions/expand.svg" alt="expand" width="24" height="24" />
+  </button>
+  <button class="btn-control close" aria-label="Close window">
+    <img src="/window-actions/close.svg" alt="close" width="24" height="24" />
+  </button>
+</div>
+
+<style>
+  .window-controls {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .btn-control {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: background-color var(--transition-fast);
+  }
+
+  .btn-control img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .minimize:hover,
+  .expand:hover {
+    background-color: var(--bg-hover);
+  }
+
+  .close:hover {
+    background-color: var(--accent-danger);
+  }
+</style>

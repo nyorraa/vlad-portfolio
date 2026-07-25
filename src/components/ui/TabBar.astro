@@ -1,0 +1,60 @@
+---
+interface Tab {
+  id: string;
+  label: string;
+  href: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  activeTab?: string;
+}
+
+const { tabs, activeTab } = Astro.props;
+---
+
+<nav class="tab-bar">
+  {tabs.map((tab) => (
+    <a
+      href={tab.href}
+      class:list={['tab-link', { active: activeTab === tab.id }]}
+      data-tab={tab.id}
+    >
+      {tab.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .tab-bar {
+    display: flex;
+    background-color: var(--bg-tab);
+    border-bottom: var(--border-width) solid var(--border-color);
+    height: var(--tab-bar-height);
+    box-sizing: border-box;
+  }
+
+  .tab-link {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-xl);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    border-right: var(--border-width) solid var(--border-color);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    letter-spacing: 0.5px;
+  }
+
+  .tab-link:hover {
+    background-color: var(--bg-hover);
+    color: var(--color-text-primary);
+  }
+
+  .tab-link.active {
+    color: var(--color-text-primary);
+    background-color: var(--bg-primary);
+    border-bottom: 2px solid var(--accent-primary);
+  }
+</style>

@@ -1,0 +1,94 @@
+/* ============================================================================
+   VS CODE THEME TOKENS
+   Цветовая система, типографика, spacing и transitions
+   ============================================================================ */
+
+:root {
+  /* === ФОНОВЫЕ ЦВЕТА === */
+  --bg-primary: #1e1e1e;
+  --bg-header: #282836;
+  --bg-activity-bar: #14141a;
+  --bg-sidebar: #1a1a24;
+  --bg-editor: #1e1e1e;
+  --bg-tab: #222230;
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-active: rgba(255, 255, 255, 0.1);
+
+  /* === АКЦЕНТНЫЕ ЦВЕТА (VS Code) === */
+  --accent-primary: #007acc;        /* Основной синий VS Code */
+  --accent-hover: #1e88e5;          /* Светлее на hover */
+  --accent-active: #0e639c;         /* Темнее для active */
+  --accent-success: #4ec9b0;        /* Бирюзовый (тип данных) */
+  --accent-warning: #ce9178;        /* Оранжевый (строки) */
+  --accent-error: #f48771;          /* Красный (ошибки) */
+  --accent-danger: #c42b1c;         /* Яркий красный (close button) */
+
+  /* === ТЕКСТОВЫЕ ЦВЕТА === */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-muted: #aaaaaa;
+  --color-text-disabled: #666666;
+
+  /* === СИНТАКСИС (VS Code) === */
+  --color-comment: #6a9955;         /* Зелёный комментарий */
+  --color-keyword: #569cd6;         /* Синий ключевое слово */
+  --color-string: #ce9178;          /* Оранжевый строка */
+  --color-number: #b5cea8;          /* Светло-зелёный число */
+  --color-function: #dcdcaa;        /* Жёлтый функция */
+  --color-variable: #9cdcfe;        /* Голубой переменная */
+
+  /* === ГРАНИЦЫ === */
+  --border-color: #000000;
+  --border-subtle: #333333;
+  --border-width: 1px;
+
+  /* === ТИПОГРАФИКА === */
+  --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 32px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.4;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  /* === SPACING === */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 10px;
+  --spacing-lg: 15px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 30px;
+  --spacing-3xl: 40px;
+
+  /* === РАЗМЕРЫ === */
+  --header-height: 45px;
+  --activity-bar-width: 50px;
+  --sidebar-width: 25vw;
+  --tab-bar-height: 40px;
+
+  /* === ПЕРЕХОДЫ === */
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* === РАДИУСЫ === */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 32px;
+
+  /* === ТЕНИ === */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+  /* === Z-INDEX === */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
+}
