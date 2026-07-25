@@ -1,31 +1,167 @@
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+		<link rel="icon" type="image/svg+xml" href="images/logo.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vlad-nyorraa-profile</title>
+		<title>Vlad | Backend Engineer Portfolio</title>
 	</head>
 
 	<body> 
-		<!--        Главный контейнер всей IDE        -->
-		<div class="ide-container">
+		<div class="container">
 
-			<!--        HEADER        -->
-			<header class="ide-header">
+			<!--          HEADER SECTION          -->
+			<header class="header">
 				<div class="window-title">vlad_portfolio.dev</div>
 				<div class="window-controls">
-					<button class="btn-control minimize">
-						<img src="/min.svg" alt="minimize" />
+					<button class="btn-control minimize" aria-label="Minimize window">
+						<img src="window-actions/minimize.svg" alt="minimize" />
 					</button>
-					<button class="btn-control expand">
-						<img src="/exp.svg" alt="expand" />
+					<button class="btn-control expand" aria-label="Expand window">
+						<img src="window-actions/expand.svg" alt="expand" />
 					</button>
-					<button class="btn-control close">
-						<img src="/close.svg" alt="close" />
+					<button class="btn-control close" aria-label="Close window">
+						<img src="window-actions/close.svg" alt="close" />
 					</button>
 				</div>
 			</header>
+
+			<div class="workspace">
+
+				<!--          IDE ACTIVITY BAR          -->
+				<div class="activity-bar">
+					<div class="activity-top">
+						<button class="btn-activity active" aria-label="Explorer">
+							<img src="activity-bar/file-svgrepo-com.svg" alt="files" />
+						</button>
+						<button class="btn-activity" aria-label="Search">
+							<img src="activity-bar/python-svgrepo-com.svg" alt="search" />
+						</button>
+						<button class="btn-activity" aria-label="Source Control">
+							<img src="activity-bar/git.svg" alt="git" />
+						</button>
+						<button class="btn-activity" aria-label="Source Control">
+							<img src="activity-bar/search-alt-1-svgrepo-com.svg" alt="git" />
+						</button>	
+					</div>
+					<div class="activity-bottom">
+						<button class="btn-activity" aria-label="Settings">
+							<img src="activity-bar/settings-svgrepo-com (1).svg" alt="settings" />
+						</button>
+					</div>
+				</div>
+
+				<!--          SIDE NAVIGATION PANEL          -->
+				<aside class="projects-navigation">
+    
+					<!--          CATEGORIES AND FILTERING          -->
+					<div class="nav-section">
+						<div class="section-header"># Categories</div>
+						<div class="section-body">
+							<button class="btn-nav active">
+								<span class="icon">[▪]</span> All Projects
+							</button>
+							<button class="btn-nav">
+								<span class="icon">[ ]</span> LeetCode & Alg
+							</button>
+							<button class="btn-nav">
+								<span class="icon">[ ]</span> SQL & DB
+							</button>
+							<button class="btn-nav">
+								<span class="icon">[ ]</span> 3D Graphics
+							</button>
+						</div>
+					</div>
+					
+					<!--          HIGHLIGHTED REPOSITORIES          -->
+					<div class="nav-section">
+						<div class="section-header"># Top Projects</div>
+						<div class="section-body">
+							<button class="btn-project">
+								<span class="icon-arrow">▸</span> Overlimit
+							</button>
+							<button class="btn-project">
+								<span class="icon-arrow">▸</span> Knowledge Hub
+							</button>
+							<button class="btn-project">
+								<span class="icon-arrow">▸</span> Lawyer_tg_bot
+							</button>
+						</div>
+					</div>
+
+				</aside>
+
+				<!--          MAIN CONTENT AREA          -->
+				<main class="main-info-zone">
+        
+					<!--          ANCHOR NAVIGATION          -->
+					<nav class="main-anchors">
+						<a href="#about" class="anchor-link">ABOUT ME</a>
+						<a href="#stack" class="anchor-link">STACK</a>
+						<a href="#contact" class="anchor-link">CONTACT</a>
+					</nav>
+
+					<div class="scrollable-content">
+						
+						<!--          ABOUT ME SECTION          -->
+						<section id="about" class="main-preview">
+							<div class="about-layout">
+								
+								<div class="about-text">
+									<h2># About Me</h2>
+									<h1 class="dev-title">BACKEND <span class="highlight">Engineer</span></h1>
+									<p class="dev-description">
+										Backend Software Engineer specializing in production-ready Python development. 
+										Experienced in architecting fault-tolerant APIs (Modular Monoliths / Microservices), event-driven systems, real-time voice stacks, and production LLM integrations using RAG patterns. 
+										Deeply focused on algorithm optimization, complex SQL performance tuning, and low-latency database design. Can deploy apps on linux server, and support/expand them.
+										<br /><br />
+										Leveraging <strong>C#</strong> as a secondary language for systems programming and gameplay engineering. 
+										In my spare time, I develop <span class="game-highlight">OVERLIMIT</span>—a custom arcade racing simulator built with <strong>Unity and C#</strong>, applying advanced OOP principles, custom physics, and rigorous code optimization. 
+										I maintain an active, clean, and production-grade codebase across all public repositories on GitHub.
+									</p>
+								</div>
+								
+								<div class="avatar-card">
+									<div class="card-border">
+										<div class="image-wrapper">
+											<img src="images/human-handsup-svgrepo-com.svg" alt="Vlad - Backend Engineer" />
+										</div>
+										<div class="card-footer">
+											<span>vlad_portfolio.dev</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</section>
+
+						<!--          TECHNOLOGY STACK SECTION          -->
+						<section id="stack" class="main-stack">
+							<h2># Tech Stack</h2>
+							<div class="stack-container">
+								<p><strong>Core & Backend:</strong> Python 3.11+, asyncio, FastAPI, Pydantic, Swagger, uv, Logging, Pytest</p>
+								<p><strong>AI & Machine Learning:</strong> AI Agents & LLM, RAG Architecture, LangChain, Ollama, Vector Databases, Machine Learning, pandas</p>
+								<p><strong>Architecture & Data:</strong> High-load Systems, Microservices Architecture, Database Design, PostgreSQL, MySQL, Redis, Celery, Alembic, Payment Integration</p>
+								<p><strong>DevOps & Infrastructure:</strong> Docker, Docker-compose, CI/CD, Git, Linux</p>
+								<p><strong>Hobby / Second Language:</strong> C#, Unity Game Engine</p>
+							</div>
+						</section>
+
+						<!--          CONTACT INFORMATION SECTION          -->
+						<section id="contact" class="main-contacts">
+							<h2># Contacts</h2>
+							<div class="contacts-container">
+								<p><strong>Telegram:</strong> <a href="https://t.me/nyorraa" target="_blank" rel="noopener noreferrer">@nyorraa</a></p>
+								<p><strong>Email:</strong> <a href="mailto:vlad1slav200508@yandex.ru">vlad1slav200508@yandex.ru</a></p>
+								<p><strong>GitHub:</strong> <a href="https://github.com/nyorraa" target="_blank" rel="noopener noreferrer">github.com/nyorraa</a></p>
+							</div>
+						</section>
+						
+					</div>
+				</main>
+				
+			</div>
 
 		</div>
 	</body>
@@ -33,21 +169,38 @@
 </html>
 
 <style>
-	body {
+	/* ==========================================================================
+	   1. GLOBAL STYLES & RESET
+	   ========================================================================== */
+	html, body {
 		margin: 0;
+		padding: 0;
+		height: 100vh;
+		overflow: hidden;
 		background-color: #1e1e1e;
 		color: #fff;
 		font-family: monospace;
 	}
 
-	.ide-header {
+	.container {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+	}
+
+	/* ==========================================================================
+	   2. OS WINDOW HEADER
+	   ========================================================================== */
+	.header {
 		position: relative;
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
 		padding: 10px;
 		background-color: #282836;
-		border: 1px solid black;
+		border-bottom: 1px solid #000;
+		height: 45px;
+		box-sizing: border-box;
 	}
 
 	.window-title {
@@ -88,5 +241,343 @@
 
 	.close:hover {
 		background-color: #c42b1c;
+	}
+
+	/* ==========================================================================
+	   3. WORKSPACE LAYOUT
+	   ========================================================================== */
+	.workspace {
+		display: flex;
+		flex: 1;
+		overflow: hidden;
+	}
+
+	/* ==========================================================================
+	   4. IDE ACTIVITY BAR (FAR LEFT)
+	   ========================================================================== */
+	.activity-bar {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 50px;
+		height: 100%;
+		background-color: #14141a;
+		border-right: 1px solid #000;
+		box-sizing: border-box;
+		padding: 10px 0;
+	}
+
+	.activity-top, 
+	.activity-bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.btn-activity {
+		background: transparent;
+		border: none;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		opacity: 0.7;
+		transition: opacity 0.15s ease;
+	}
+
+	.btn-activity:hover, 
+	.btn-activity.active {
+		opacity: 1;
+	}
+
+	.btn-activity img {
+		width: 30px;
+		height: 30px;
+	}
+
+	/* ==========================================================================
+	   5. IDE SIDEBAR NAVIGATION (EXPLORER TREE)
+	   ========================================================================== */
+	.projects-navigation {
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
+		width: 25vw;
+		height: 100%;
+		background-color: #1a1a24;
+		padding: 20px 15px;
+		box-sizing: border-box;
+		border-right: 1px solid #000;
+		overflow-y: auto;
+	}
+
+	.nav-section {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.section-header {
+		font-size: 13px;
+		font-weight: bold;
+		color: #6a9955;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 8px;
+		padding-left: 5px;
+	}
+
+	.section-body {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.projects-navigation button {
+		width: 100%;
+		height: 32px;
+		background: transparent;
+		border: none;
+		color: #aaaaaa;
+		font-family: monospace;
+		font-size: 14px;
+		text-align: left;
+		padding: 0 10px;
+		cursor: pointer;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		transition: background-color 0.15s, color 0.15s;
+	}
+
+	.projects-navigation button:hover {
+		background-color: rgba(255, 255, 255, 0.05);
+		color: #ffffff;
+	}
+
+	.projects-navigation button.active {
+		background-color: #264f78;
+		color: #ffffff;
+	}
+
+	.icon {
+		color: #264f78;
+		font-weight: bold;
+	}
+
+	.projects-navigation button:hover .icon {
+		color: #fff;
+	}
+
+	.icon-arrow {
+		color: #888;
+		transition: transform 0.15s ease;
+	}
+
+	.projects-navigation button:hover .icon-arrow {
+		color: #6a9955;
+		transform: translateX(2px);
+	}
+
+	/* ==========================================================================
+	   6. MAIN CODE ZONE (EDITOR TABS & CONTENT)
+	   ========================================================================== */
+	.main-info-zone {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.main-anchors {
+		display: flex;
+		background-color: #222230;
+		border-bottom: 1px solid #000;
+		height: 40px;
+		box-sizing: border-box;
+	}
+
+	.anchor-link {
+		display: flex;
+		align-items: center;
+		padding: 0 20px;
+		color: #aaa;
+		text-decoration: none;
+		font-size: 13px;
+		border-right: 1px solid #000;
+		transition: color 0.15s, background-color 0.15s;
+	}
+
+	.anchor-link:hover {
+		background-color: #1a1a24;
+		color: #fff;
+	}
+
+	.scrollable-content {
+		flex: 1;
+		overflow-y: auto;
+		scroll-behavior: smooth;
+		padding: 30px;
+		box-sizing: border-box;
+	}
+
+	.main-preview, 
+	.main-stack, 
+	.main-contacts {
+		min-height: 85vh;
+		margin-bottom: 40px;
+		border-bottom: 1px dashed #333;
+		scroll-margin-top: 40px;
+	}
+
+	/* ==========================================================================
+	   7. MODULES: ABOUT ME TYPOGRAPHY & AVATAR CARD
+	   ========================================================================== */
+	.about-layout {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 40px;
+		padding-top: 10px;
+	}
+
+	.about-text {
+		flex: 1;
+	}
+
+	.code-comment {
+		color: #6a9955;
+		font-weight: bold;
+		display: block;
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	.dev-title {
+		font-size: 32px;
+		font-weight: bold;
+		color: #fff;
+		margin: 10px 0 20px 0;
+	}
+
+	.highlight {
+		background-color: #264f78;
+		color: #fff;
+		padding: 2px 10px;
+		border-radius: 4px;
+	}
+
+	.dev-description {
+		color: #cccccc;
+		font-size: 15px;
+		line-height: 1.6;
+		max-width: 600px;
+	}
+
+	.game-highlight {
+		background-color: #c42b1c;
+		color: #fff;
+		padding: 2px 6px;
+		border-radius: 4px;
+		font-weight: bold;
+	}
+
+	.avatar-card {
+		flex-shrink: 0;
+		margin-right: 20px;
+	}
+
+	.card-border {
+		width: 240px;
+		height: 320px;
+		border: 2px solid #fff;
+		border-radius: 32px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		background-color: #1e1e1e;
+	}
+
+	.image-wrapper {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 2px solid #fff;
+		background-color: #252526;
+	}
+
+	.image-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.card-footer {
+		height: 55px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #1e1e1e;
+		font-weight: bold;
+		font-size: 13px;
+		letter-spacing: 1px;
+		color: #fff;
+	}
+
+	/* ==========================================================================
+	   8. MODULES: TECH STACK & CONTACT CONTAINERS
+	   ========================================================================== */
+	.stack-container p,
+	.contacts-container p {
+		font-size: 15px;
+		line-height: 1.8;
+		color: #ccc;
+		margin: 18px 0;
+	}
+
+	.stack-container strong,
+	.contacts-container strong {
+		color: #264f78;
+		display: inline-block;
+		margin-right: 5px;
+	}
+
+	.contacts-container a {
+		color: #fff;
+		text-decoration: none;
+		border-bottom: 1px dashed #6a9955;
+		transition: color 0.15s ease;
+	}
+
+	.contacts-container a:hover {
+		color: #6a9955;
+	}
+
+	/* ==========================================================================
+	   9. RESPONSIVE DESIGN (MEDIA QUERIES)
+	   ========================================================================== */
+	@media (max-width: 900px) {
+		.projects-navigation {
+			display: none;
+		}
+
+		.about-layout {
+			flex-direction: column-reverse;
+			align-items: center;
+			text-align: center;
+		}
+		
+		.avatar-card {
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
+
+		.dev-description {
+			margin: 0 auto;
+		}
 	}
 </style>
