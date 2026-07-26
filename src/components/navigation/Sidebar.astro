@@ -1,10 +1,7 @@
 ---
-// Боковая панель с категориями и топовыми проектами
-
-interface Category {
+interface All {
   id: string;
   label: string;
-  active?: boolean;
 }
 
 interface Project {
@@ -13,32 +10,36 @@ interface Project {
   icon?: string;
 }
 
-const categories: Category[] = [
-  { id: 'all', label: 'All Projects', active: true },
-  { id: 'leetcode', label: 'LeetCode & Alg' },
-  { id: 'sql', label: 'SQL & DB' },
-  { id: '3d', label: '3D Graphics' },
-];
+interface Category {
+  id: string;
+  label: string;
+  active?: boolean;
+}
+
+const allProjects: All[] = [
+  { label: 'All Projects' },
+]
 
 const topProjects: Project[] = [
   { id: 'overlimit', name: 'Overlimit' },
   { id: 'knowledge-hub', name: 'Knowledge Hub' },
   { id: 'lawyer-bot', name: 'Lawyer_tg_bot' },
 ];
+
+const categories: Category[] = [
+  { id: 'sql', label: 'SQL & DB / mb CERTIFICATES or Achievement' },
+  { id: '3d', label: '3D Graphics' },
+  { id: 'leetcode', label: 'LeetCode' },
+];
 ---
 
 <aside class="sidebar">
-  <!-- CATEGORIES SECTION -->
+  <!-- ALL PROJECTS SECTION -->
   <div class="nav-section">
-    <div class="section-header"># Categories</div>
     <div class="section-body">
-      {categories.map(({ id, label, active }) => (
-        <button
-          class:list={['btn-nav', { active }]}
-          data-category={id}
-        >
-          <span class="icon">{active ? '[▪]' : '[ ]'}</span>
-          {label}
+      {allProjects.map(({ id, label }) => (
+        <button class="btn-all-project" data-project={id}>
+        {label}
         </button>
       ))}
     </div>
@@ -52,6 +53,19 @@ const topProjects: Project[] = [
         <button class="btn-project" data-project={id}>
           <span class="icon-arrow">▸</span>
           {name}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- TOP CATEGORIES SECTION -->
+  <div class="nav-section">
+    <div class="section-header"># Categories</div>
+    <div class="section-body">
+      {categories.map(({ id, label }) => (
+        <button class="btn-categories" data-category={id}>
+          <span class="icon-arrow">▸</span>
+          {label}
         </button>
       ))}
     </div>
@@ -93,8 +107,36 @@ const topProjects: Project[] = [
     gap: var(--spacing-xs);
   }
 
-  .btn-nav,
-  .btn-project {
+  .btn-all-project {
+    width: calc(100% - calc(var(--spacing-md) * 2));
+    margin: 0 auto var(--spacing-lg) auto;
+    height: 44px;
+    padding: 0 var(--spacing-lg);
+    background: transparent;
+    border: 1px solid var(--accent-primary);
+    border-radius: var(--radius-md);
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .btn-all-project:hover {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-hover);
+  }
+
+
+  .btn-project,
+  .btn-categories
+   {
     width: 100%;
     height: 32px;
     background: transparent;
@@ -112,27 +154,9 @@ const topProjects: Project[] = [
     transition: background-color var(--transition-fast), color var(--transition-fast);
   }
 
-  .btn-nav:hover,
+  .btn-categories:hover,
   .btn-project:hover {
     background-color: var(--bg-hover);
-    color: var(--color-text-primary);
-  }
-
-  .btn-nav.active {
-    background-color: var(--accent-primary);
-    color: var(--color-text-primary);
-  }
-
-  .icon {
-    color: var(--accent-primary);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .btn-nav:hover .icon {
-    color: var(--color-text-primary);
-  }
-
-  .btn-nav.active .icon {
     color: var(--color-text-primary);
   }
 
