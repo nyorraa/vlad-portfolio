@@ -1,0 +1,188 @@
+---
+const languages = [
+  { id: 'en', label: 'English', flag: '🇬🇧' },
+  { id: 'ru', label: 'Русский', flag: '🇷🇺' },
+];
+---
+
+<div class="language-switcher">
+  <button class="lang-button" aria-label="Change language" id="lang-toggle">
+    <span class="current-flag" id="current-flag">🇬🇧</span>
+  </button>
+
+  <div class="lang-menu" id="lang-menu">
+    <div class="lang-menu-header">Language</div>
+    {languages.map(({ id, label, flag }) => (
+      <button class="lang-option" data-lang={id}>
+        <span class="lang-flag">{flag}</span>
+        <span class="lang-label">{label}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  import { setLanguage, getCurrentLanguage } from '../../i18n/utils';
+
+  function initLanguageSwitcher() {
+    const toggle = document.getElementById('lang-toggle');
+    const menu = document.getElementById('lang-menu');
+    const currentFlag = document.getElementById('current-flag');
+    const options = document.querySelectorAll('.lang-option');
+
+    if (!toggle || !menu || !currentFlag) return;
+
+    const flags: Record<string, string> = {
+      en: '🇬🇧',
+      ru: '🇷🇺',
+    };
+
+    // Toggle menu
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('open');
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target as Node) && e.target !== toggle) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Language selection
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        const lang = option.getAttribute('data-lang');
+        if (lang && (lang === 'ru' || lang === 'en')) {
+          setLanguage(lang);
+          currentFlag.textContent = flags[lang];
+          menu.classList.remove('open');
+
+          // Update active state
+          options.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+
+          // Reload page to apply translations
+          window.location.reload();
+        }
+      });
+    });
+
+    // Set initial active language
+    const currentLang = getCurrentLanguage();
+    currentFlag.textContent = flags[currentLang];
+    options.forEach((option) => {
+      if (option.getAttribute('data-lang') === currentLang) {
+        option.classList.add('active');
+      }
+    });
+  }
+
+  // Init on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+  } else {
+    initLanguageSwitcher();
+  }
+</script>
+
+<style>
+  .language-switcher {
+    position: relative;
+  }
+
+  .lang-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .lang-button:hover {
+    opacity: 1;
+    background-color: var(--bg-hover);
+  }
+
+  .current-flag {
+    display: block;
+  }
+
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    min-width: 180px;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-fast),
+                visibility var(--transition-fast),
+                transform var(--transition-fast);
+    z-index: var(--z-dropdown);
+  }
+
+  .lang-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-menu-header {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    padding: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    text-align: left;
+  }
+
+  .lang-option:hover {
+    background-color: var(--bg-hover);
+    color: var(--color-text-primary);
+  }
+
+  .lang-option.active {
+    background-color: var(--bg-active);
+    color: var(--accent-primary);
+  }
+
+  .lang-flag {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .lang-label {
+    flex: 1;
+  }
+</style>
