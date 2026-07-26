@@ -1,4 +1,3 @@
-// Theme system with multiple color schemes
 export type ThemeName = 'vscode' | 'lightSepia' |  'deepWine';
 
 export interface Theme {
@@ -66,12 +65,12 @@ export const themes: Record<ThemeName, Theme> = {
       accentError: '#f48771',
       accentDanger: '#e51400',
 
-      colorTextPrimary: '#078b92',
-      colorTextSecondary: '#b6b5b5',
-      colorTextMuted: '#ffffff',
+      colorTextPrimary: '#ffffff',
+      colorTextSecondary: '#cccccc',
+      colorTextMuted: '#aaaaaa',
       colorTextDisabled: '#4f4f4f',
 
-      colorComment: '#bbe392',
+      colorComment: '#6a9955',
       colorKeyword: '#569cd6',
       colorString: '#ce9178',
       colorNumber: '#b5cea8',
@@ -127,7 +126,7 @@ export const themes: Record<ThemeName, Theme> = {
       bgHeader: '#f3ede0',
       bgActivityBar: '#362f2b',
       bgSidebar: '#f6f0e5',
-      bgEditor: '#fdfbvar',
+      bgEditor: '#fdfbf5',
       bgTab: '#ebdcc5',
       bgHover: 'rgba(156, 114, 83, 0.06)',
       bgActive: 'rgba(156, 114, 83, 0.12)',
@@ -157,10 +156,6 @@ export const themes: Record<ThemeName, Theme> = {
     },
   },
 };
-
-
-
-
 
 export function getCurrentTheme(): ThemeName {
   if (typeof window === 'undefined') return 'vscode';
