@@ -9,7 +9,8 @@ import StackSection from '../components/sections/StackSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
 import { getTranslations, getCurrentLanguage } from '../i18n/utils';
 
-const lang = getCurrentLanguage();
+const cookieHeader = Astro.request.headers.get('cookie');
+const lang = getCurrentLanguage(cookieHeader);
 const t = getTranslations(lang);
 
 const tabs = [
@@ -30,9 +31,9 @@ const tabs = [
       <TabBar tabs={tabs} />
 
       <div class="scrollable-content">
-        <AboutSection />
-        <StackSection />
-        <ContactSection />
+        <AboutSection cookieHeader={cookieHeader} />
+        <StackSection cookieHeader={cookieHeader} />
+        <ContactSection cookieHeader={cookieHeader} />
       </div>
     </main>
   </div>
