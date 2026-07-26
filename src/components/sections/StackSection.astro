@@ -1,33 +1,36 @@
 ---
-// Tech Stack секция с категориями технологий
+import { getTranslations, getCurrentLanguage } from '../../i18n/utils';
+
+const lang = getCurrentLanguage();
+const t = getTranslations(lang);
 ---
 
 <section id="stack" class="section-stack">
-  <h2 class="section-title"># Tech Stack</h2>
+  <h2 class="section-title">{t.stack.title}</h2>
   <div class="stack-container">
     <div class="stack-category">
-      <strong class="category-label">Core & Backend:</strong>
-      <span class="category-content">Python 3.11+, asyncio, FastAPI, Pydantic, Swagger, uv, Logging, Pytest</span>
+      <strong class="category-label">{t.stack.backend.title}:</strong>
+      <span class="category-content">{t.stack.backend.items.join(', ')}</span>
     </div>
 
     <div class="stack-category">
-      <strong class="category-label">AI & Machine Learning:</strong>
-      <span class="category-content">AI Agents & LLM, RAG Architecture, LangChain, Ollama, Vector Databases, Machine Learning, pandas</span>
+      <strong class="category-label">{t.stack.databases.title}:</strong>
+      <span class="category-content">{t.stack.databases.items.join(', ')}</span>
     </div>
 
     <div class="stack-category">
-      <strong class="category-label">Architecture & Data:</strong>
-      <span class="category-content">High-load Systems, Microservices Architecture, Database Design, PostgreSQL, MySQL, Redis, Celery, Alembic, Payment Integration</span>
+      <strong class="category-label">{t.stack.tools.title}:</strong>
+      <span class="category-content">{t.stack.tools.items.join(', ')}</span>
     </div>
 
     <div class="stack-category">
-      <strong class="category-label">DevOps & Infrastructure:</strong>
-      <span class="category-content">Docker, Docker-compose, CI/CD, Git, Linux</span>
+      <strong class="category-label">{t.stack.other.title}:</strong>
+      <span class="category-content">{t.stack.other.items.join(', ')}</span>
     </div>
 
     <div class="stack-category">
-      <strong class="category-label">Hobby / Second Language:</strong>
-      <span class="category-content">C#, Unity Game Engine</span>
+      <strong class="category-label">{t.stack.hobby.title}:</strong>
+      <span class="category-content">{t.stack.hobby.items.join(', ')}</span>
     </div>
   </div>
 </section>

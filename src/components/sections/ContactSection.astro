@@ -1,12 +1,16 @@
 ---
-// Contact секция с ссылками на социальные сети и email
+import { getTranslations, getCurrentLanguage } from '../../i18n/utils';
+
+const lang = getCurrentLanguage();
+const t = getTranslations(lang);
 ---
 
 <section id="contact" class="section-contact">
-  <h2 class="section-title"># Contacts</h2>
+  <h2 class="section-title">{t.contact.title}</h2>
+  <p class="contact-description">{t.contact.description}</p>
   <div class="contacts-container">
     <div class="contact-item">
-      <strong class="contact-label">Telegram:</strong>
+      <strong class="contact-label">{t.contact.telegram}:</strong>
       <a
         href="https://t.me/nyorraa"
         target="_blank"
@@ -18,7 +22,7 @@
     </div>
 
     <div class="contact-item">
-      <strong class="contact-label">Email:</strong>
+      <strong class="contact-label">{t.contact.email}:</strong>
       <a
         href="mailto:vlad1slav200508@yandex.ru"
         class="contact-link"
@@ -28,7 +32,7 @@
     </div>
 
     <div class="contact-item">
-      <strong class="contact-label">GitHub:</strong>
+      <strong class="contact-label">{t.contact.github}:</strong>
       <a
         href="https://github.com/nyorraa"
         target="_blank"
@@ -52,6 +56,12 @@
     color: var(--color-comment);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .contact-description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
     margin-bottom: var(--spacing-xl);
   }
 

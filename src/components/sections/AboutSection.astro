@@ -1,35 +1,30 @@
 ---
 import AvatarCard from '../ui/AvatarCard.astro';
 import Badge from '../ui/Badge.astro';
+import { getTranslations, getCurrentLanguage } from '../../i18n/utils';
+
+const lang = getCurrentLanguage();
+const t = getTranslations(lang);
 ---
 
 <section id="about" class="section-about">
   <div class="about-layout">
     <div class="about-text">
-      <h2 class="section-title"># About Me</h2>
+      <h2 class="section-title">{t.about.title}</h2>
       <h1 class="dev-title">
-        BACKEND <Badge variant="primary" text="Engineer" />
+        {t.about.jobTitle} <Badge variant="primary" text={t.about.badge} />
       </h1>
-      <p class="dev-description">
-        Backend Software Engineer specializing in production-ready Python development.
-        Experienced in architecting fault-tolerant APIs (Modular Monoliths / Microservices),
-        event-driven systems, real-time voice stacks, and production LLM integrations using RAG patterns.
-        <br /><br />
-        Deeply focused on algorithm optimization, complex SQL performance tuning, and low-latency
-        database design. Can deploy apps on linux server, and support/expand them.
-        <br /><br />
-        Leveraging <strong>C#</strong> as a secondary language for systems programming and gameplay engineering.
-        In my spare time, I develop <Badge variant="danger" text="OVERLIMIT" />—a custom arcade racing
-        simulator built with <strong>Unity and C#</strong>, applying advanced OOP principles, custom physics,
-        and rigorous code optimization. I maintain an active, clean, and production-grade codebase across
-        all public repositories on GitHub.
-      </p>
+      <div class="dev-description">
+        {t.about.description.map((paragraph, i) => (
+          <p set:html={paragraph} class:list={[{ 'mt': i > 0 }]} />
+        ))}
+      </div>
     </div>
 
     <AvatarCard
       imageSrc="/images/human-handsup-svgrepo-com.svg"
       imageAlt="Vlad - Backend Engineer"
-      caption="vlad_portfolio.dev"
+      caption={t.about.avatarCaption}
     />
   </div>
 </section>
@@ -79,8 +74,26 @@ import Badge from '../ui/Badge.astro';
     max-width: 600px;
   }
 
+  .dev-description p {
+    margin: 0;
+  }
+
+  .dev-description p.mt {
+    margin-top: var(--spacing-lg);
+  }
+
   .dev-description strong {
     color: var(--color-keyword);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .dev-description :global(.badge-danger) {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: var(--accent-danger);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-bold);
   }
 
