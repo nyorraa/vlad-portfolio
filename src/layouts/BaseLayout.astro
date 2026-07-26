@@ -20,11 +20,22 @@ const {
   <meta name="author" content="Vlad - Backend Engineer" />
   <meta name="theme-color" content="#1e1e1e" />
   <title>{title}</title>
+  <script>
+    // Initialize theme immediately to prevent flash
+    (function() {
+      const stored = localStorage.getItem('theme') || 'vscode';
+      document.documentElement.setAttribute('data-theme', stored);
+    })();
+  </script>
 </head>
 <body>
   <div class="container">
     <slot />
   </div>
+  <script>
+    import { initTheme } from '../lib/themes';
+    initTheme();
+  </script>
 </body>
 </html>
 

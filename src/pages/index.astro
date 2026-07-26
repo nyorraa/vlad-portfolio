@@ -7,11 +7,15 @@ import TabBar from '../components/ui/TabBar.astro';
 import AboutSection from '../components/sections/AboutSection.astro';
 import StackSection from '../components/sections/StackSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
+import { getTranslations, getCurrentLanguage } from '../i18n/utils';
+
+const lang = getCurrentLanguage();
+const t = getTranslations(lang);
 
 const tabs = [
-  { id: 'about', label: 'ABOUT ME', href: '#about' },
-  { id: 'stack', label: 'STACK', href: '#stack' },
-  { id: 'contact', label: 'CONTACT', href: '#contact' },
+  { id: 'about', label: t.tabs.about, href: '#about' },
+  { id: 'stack', label: t.tabs.stack, href: '#stack' },
+  { id: 'contact', label: t.tabs.contact, href: '#contact' },
 ];
 ---
 
