@@ -1,7 +1,12 @@
 ---
 import { getTranslations, getCurrentLanguage } from '../../i18n/utils';
 
-const lang = getCurrentLanguage();
+interface Props {
+  cookieHeader?: string;
+}
+
+const { cookieHeader } = Astro.props;
+const lang = getCurrentLanguage(cookieHeader);
 const t = getTranslations(lang);
 ---
 

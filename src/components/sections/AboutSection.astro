@@ -3,7 +3,12 @@ import AvatarCard from '../ui/AvatarCard.astro';
 import Badge from '../ui/Badge.astro';
 import { getTranslations, getCurrentLanguage } from '../../i18n/utils';
 
-const lang = getCurrentLanguage();
+interface Props {
+  cookieHeader?: string;
+}
+
+const { cookieHeader } = Astro.props;
+const lang = getCurrentLanguage(cookieHeader);
 const t = getTranslations(lang);
 ---
 
@@ -22,7 +27,7 @@ const t = getTranslations(lang);
     </div>
 
     <AvatarCard
-      imageSrc="/images/human-handsup-svgrepo-com.svg"
+      imageSrc="/images/logo.svg"
       imageAlt="Vlad - Backend Engineer"
       caption={t.about.avatarCaption}
     />
