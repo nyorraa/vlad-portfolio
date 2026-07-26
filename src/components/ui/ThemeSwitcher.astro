@@ -1,0 +1,175 @@
+---
+import Icon from './Icon.astro';
+
+const themes = [
+  { id: 'vscode', label: 'VS Code Dark'},
+  { id: 'deepWine', label: 'Wine'},
+  { id: 'lightSepia', label: 'Light Sepia'},
+];
+---
+
+<div class="theme-switcher">
+  <button class="theme-button" aria-label="Change theme" id="theme-toggle">
+    <Icon src="/activity-bar/settings-svgrepo-com (1).svg" alt="theme" size={20} />
+  </button>
+
+  <div class="theme-menu" id="theme-menu">
+    <div class="theme-menu-header">Themes</div>
+    {themes.map(({ id, label, icon }) => (
+      <button class="theme-option" data-theme={id}>
+        <span class="theme-icon">{icon}</span>
+        <span class="theme-label">{label}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  import { setTheme, getCurrentTheme } from '../../lib/themes';
+
+  function initThemeSwitcher() {
+    const toggle = document.getElementById('theme-toggle');
+    const menu = document.getElementById('theme-menu');
+    const options = document.querySelectorAll('.theme-option');
+
+    if (!toggle || !menu) return;
+
+    // Toggle menu
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('open');
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target as Node) && e.target !== toggle) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Theme selection
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        const themeName = option.getAttribute('data-theme');
+        if (themeName) {
+          setTheme(themeName as any);
+          menu.classList.remove('open');
+
+          // Update active state
+          options.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+        }
+      });
+    });
+
+    // Set initial active theme
+    const currentTheme = getCurrentTheme();
+    options.forEach((option) => {
+      if (option.getAttribute('data-theme') === currentTheme) {
+        option.classList.add('active');
+      }
+    });
+  }
+
+  // Init on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeSwitcher);
+  } else {
+    initThemeSwitcher();
+  }
+</script>
+
+<style>
+  .theme-switcher {
+    position: relative;
+  }
+
+  .theme-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .theme-button:hover {
+    opacity: 1;
+    background-color: var(--bg-hover);
+  }
+
+  .theme-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    min-width: 200px;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-fast),
+                visibility var(--transition-fast),
+                transform var(--transition-fast);
+    z-index: var(--z-dropdown);
+  }
+
+  .theme-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .theme-menu-header {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    padding: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .theme-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    text-align: left;
+  }
+
+  .theme-option:hover {
+    background-color: var(--bg-hover);
+    color: var(--color-text-primary);
+  }
+
+  .theme-option.active {
+    background-color: var(--bg-active);
+    color: var(--accent-primary);
+  }
+
+  .theme-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .theme-label {
+    flex: 1;
+  }
+</style>
